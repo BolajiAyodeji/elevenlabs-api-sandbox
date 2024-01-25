@@ -1,0 +1,17 @@
+{
+  "name": "elevenlabs-api-sandbox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node client/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bolaji Ayodeji",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.1",
+    "elevenlabs": "^0.1.1",
+    "fs": "^0.0.1-security"
+  }
+}
