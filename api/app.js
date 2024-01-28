@@ -1,45 +1,44 @@
 require("dotenv").config();
+const fetch = require("node-fetch");
+const fs = require("fs").promises;
 
-async function getAllRes(type) {
-  const response = await fetch(`https://api.elevenlabs.io/v1/${type}`, {
+function getAllRes(type) {
+  fetch(`https://api.elevenlabs.io/v1/${type}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
       "xi-api-key": process.env.ELEVENLABS_API_KEY,
     },
-  });
-  const data = await response.json();
-  console.log(`ALL ${type.toUpperCase()}`, data);
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(`ALL ${type.toUpperCase()}`, data));
 }
 
 // getAllRes("models");
 // getAllRes("voices");
 
-function generateAudio() {
-  const voice_id = "CYw3kZ02Hs0563khs1Fj";
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "xi-api-key": process.env.ELEVENLABS_API_KEY,
-    },
-    body: {
-      text: "Hi, I'm Bolaji Ayodeji.",
-      model_id: "eleven_multilingual_v2",
-      voice_settings: {
-        similarity_boost: 0.5,
-        stability: 0.5,
-      },
-      // pronunciation_dictionary_locators: [
-      //   { pronunciation_dictionary_id: "<string>", version_id: "<string>" },
-      // ],
-    },
-  };
+async function generateAudio() {
+  const voiceId = "CYw3kZ02Hs0563khs1Fj";
 
-  fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voice_id}`, options)
-    .then((response) => response.json())
-    .then((response) => console.log(response))
-    .catch((err) => console.error(err));
+  const response = await fetch(
+    `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`,
+    {
+      method: "POST",
+      headers: {
+        Accept: "audio/mpeg",
+        "Content-Type": "application/json",
+        "xi-api-key": process.env.ELEVENLABS_API_KEY,
+      },
+      body: JSON.stringify({
+        model_id: "eleven_multilingual_v2",
+        text: "Hi, I'm Bolaji Ayodeji.",
+        voice_settings: { similarity_boost: 0.5, stability: 0.5 },
+      }),
+    }
+  );
+
+  await fs.writeFile("audio-js.mp3", await response.buffer(), "binary");
+  console.log("Audio file saved successfully!");
 }
 
 generateAudio();

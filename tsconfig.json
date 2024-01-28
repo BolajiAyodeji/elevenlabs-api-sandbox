@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./public",
+    "rootDir": "./client",
+    "typeRoots": ["./node_modules/@types"]
+  },
+  "include": ["client/*", "app.ts"]
+}

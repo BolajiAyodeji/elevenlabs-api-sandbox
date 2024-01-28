@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "build": "npx tsc",
     "start": "node client/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,6 +14,11 @@
   "dependencies": {
     "dotenv": "^16.4.1",
     "elevenlabs": "^0.1.1",
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "node-fetch": "^2.7.0",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.10"
   }
 }
