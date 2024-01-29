@@ -19,7 +19,8 @@ python /api/app.py
 `/client` contains some code to interact with ElevenLabs using their TypeScript and Python SDKs. All you have to do is install the required dependencies and run the commands:
 
 ```bash
-node /client/app.js
+npm run build
+npm run start
 
 python /client/app.py
 ```
