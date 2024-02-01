@@ -12,6 +12,7 @@ async function getAllRes() {
   const voices = await elevenlabs.voices.getAll();
   console.log("ALL VOICES", voices);
 }
+// getAllRes();
 
 async function generateAudio() {
   const audio = await elevenlabs.generate({

@@ -12,7 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "dotenv": "^16.4.1",
-    "elevenlabs": "^0.1.1",
+    "elevenlabs": "^0.1.5",
     "fs": "^0.0.1-security",
     "node-fetch": "^2.7.0",
     "typescript": "^5.3.3"
